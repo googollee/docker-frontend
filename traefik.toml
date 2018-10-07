@@ -1,0 +1,26 @@
+defaultEntryPoints = ["http", "https"]
+
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+
+  [entryPoints.https]
+  address = ":443"
+    [entryPoints.https.tls]
+      [[entryPoints.https.tls.certificates]]
+      certFile = "/etc/traefik/ssl.crt"
+      keyFile = "/etc/traefik/ssl.key"
+    [entryPoints.https.auth]
+      [entryPoints.https.auth.basic]
+      users = [
+        "googol:$apr1$KGbeqfEu$Q1wYbzZXaK7981Re/83Uk/",
+      ]
+
+[docker]
+domain = "zhaohai.li"
+endpoint = "unix:///var/run/docker.sock"
+watch = true
+
+[api]
+entryPoint = "https"
+dashboard = true
