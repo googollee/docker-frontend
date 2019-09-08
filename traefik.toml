@@ -3,6 +3,9 @@ defaultEntryPoints = ["http", "https"]
 [entryPoints]
   [entryPoints.http]
   address = ":80"
+    [entryPoints.http.redirect]
+    regex = "^http://transmission.*"
+    entryPoint = "https"
 
   [entryPoints.https]
   address = ":443"
@@ -13,7 +16,7 @@ defaultEntryPoints = ["http", "https"]
     [entryPoints.https.auth]
       [entryPoints.https.auth.basic]
       users = [
-        "googol:$apr1$KGbeqfEu$Q1wYbzZXaK7981Re/83Uk/",
+        "googol:$apr1$21V9eoxN$xwcW8ud3rHKr4gsVWwHx0.",
       ]
 
 [docker]
