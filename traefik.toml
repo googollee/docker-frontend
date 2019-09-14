@@ -4,8 +4,8 @@ defaultEntryPoints = ["http", "https"]
   [entryPoints.http]
   address = ":80"
     [entryPoints.http.redirect]
-    regex = "^http://transmission.*"
-    entryPoint = "https"
+    regex = "^http://transmission\.googol\.im/(.*)$"
+    replacement = "https://transmission.googol.im/$1"
 
   [entryPoints.https]
   address = ":443"
